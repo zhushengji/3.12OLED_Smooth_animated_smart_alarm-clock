@@ -1,0 +1,104 @@
+/**
+ * @brief 横向或纵向移动，只能是一维的
+ * @param y 当前y或x坐标或待变化的长度
+ * @param fy 目标y或x坐标或目标长度
+ * @param step 移动幅度
+ * @param slow_cnt 修正幅度
+ */
+bool ui_siglerun(short *y, short *fy, uint8_t step, uint8_t slow_cnt)
+{
+
+    uint8_t temp;
+    temp = abs(*fy - *y) > slow_cnt ? step : 1;
+    if (*y < *fy)
+    {
+        *y += temp;
+    }
+    else if (*y > *fy)
+    {
+        *y -= temp;
+    }
+    else
+    {
+        return true;
+    }
+    return false;
+}
+#define DAMPING_FACTOR 0.85    // 阻尼系数，控制回弹效果0.85
+#define POSITION_THRESHOLD 2   // 位置阈值
+#define VELOCITY_THRESHOLD 0.2 // 速度阈值
+
+/**
+ * @brief 带回弹的动画坐标计算函数
+ * @param y 要变化的数据
+ * @param fy 目标数据
+ * @param velocity 速度记录
+ * @param step 速度
+ * @return
+ */
+bool ui_bounce(short *y, short *fy, float *velocity, float step)
+{
+    // if(abs(*y)-abs(*fy)<=POSITION_THRESHOLD){
+    //     return false;
+    // }
+    // 计算加速度
+    float acceleration = (*fy - *y) * step;
+
+    // 更新速度
+    *velocity = *velocity * DAMPING_FACTOR + acceleration;
+
+    // 更新位置
+    *y += (short)*velocity;
+
+    // 检查是否到达目标位置并且速度足够小
+    if (fabs(*fy - *y) < POSITION_THRESHOLD && fabs(*velocity) < VELOCITY_THRESHOLD)
+    {
+        *y = *fy;      // 将位置修正到最终目标位置
+        *velocity = 0; // 将速度重置为0
+        return false;
+    }
+
+    return true;
+}
+/**
+ * @param x 当前x坐标
+ * @param fx 目标x坐标
+ * @param y 当前y坐标
+ * @param fy 目标y坐标
+ * @param stepx x移动幅度
+ * @param stepy y移动幅度
+ * @param slow_cnt 修正幅度
+ */
+bool ui_run_plane(short *x, short *fx, short *y, short *fy, uint8_t stepx, uint8_t stepy, uint8_t slow_cnt)
+{
+    uint8_t tempX, tempY;
+
+    // 计算 X 轴的步幅
+    tempX = abs(*fx - *x) > slow_cnt ? stepx : 1;
+    if (*x < *fx)
+    {
+        *x += tempX;
+    }
+    else if (*x > *fx)
+    {
+        *x -= tempX;
+    }
+
+    // 计算 Y 轴的步幅
+    tempY = abs(*fy - *y) > slow_cnt ? stepy : 1;
+    if (*y < *fy)
+    {
+        *y += tempY;
+    }
+    else if (*y > *fy)
+    {
+        *y -= tempY;
+    }
+
+    // 判断是否仍需移动
+    if (*x == *fx && *y == *fy)
+    {
+        return false; // 移动完成
+    }
+    return true; // 继续移动
+}
