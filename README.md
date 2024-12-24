@@ -1,6 +1,7 @@
 # 3.12OLED_Smooth_animated_smart_alarm-clock
 一款基于esp32实现的丝滑动画小闹钟
-
+视频：https://youtu.be/SYInRoCkLO8
+视频：https://www.bilibili.com/video/BV1hukBYzEhU/?spm_id_from=333.1387.homepage.video_card.click
 静石键位及功能说明：
 1.顶上四个键是键1，键2，键3，键4，正面是左键，右键；
 2.键1键2是选择键，键3是确定，键4是返回；
