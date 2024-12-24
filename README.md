@@ -62,6 +62,10 @@ RTX8025
 
 交流群：855540712 进群请回答问题，群里更新进度最快
 
+## 特别说明：
+
+**使用代码自行点3.12寸OLED发生乱码现象的小伙伴需要把u8g2库里的u8x8_d_ssd1362.c的第488行，第374行，还有301行，U8X8_CA(0xa0, 0xc3)改成U8X8_CA(0xa0, 0xc1)即可**
+
 ![a0bb3fac4f7ee4f2527682af89fc310](https://github.com/user-attachments/assets/77fa6747-1a3b-4ee3-9cd9-8151a1098c77)
 ![9d6d8b7dc297bdcc11b59f055cea049](https://github.com/user-attachments/assets/48c3e917-b36c-4a9b-b9d1-6b97619550b5)
 
