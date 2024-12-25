@@ -69,3 +69,7 @@ RTX8025
 ![a0bb3fac4f7ee4f2527682af89fc310](https://github.com/user-attachments/assets/77fa6747-1a3b-4ee3-9cd9-8151a1098c77)
 ![9d6d8b7dc297bdcc11b59f055cea049](https://github.com/user-attachments/assets/48c3e917-b36c-4a9b-b9d1-6b97619550b5)
 
+## 如果你喜欢本作品且余粮比较多，可以请作者喝杯冰阔落，谢谢！
+
+![48a73fccaab32dd9f51743931c423e1](https://github.com/user-attachments/assets/80119abf-fdb1-4f0c-84d9-951d7e5a9a59)
+
